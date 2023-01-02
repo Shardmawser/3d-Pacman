@@ -11399,11 +11399,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d077a726c5e2c44091aca42c5a94349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cols: 50
-  rows: 50
-  offset: 2
-  startingPoint: {fileID: 1861057737}
-  point: {fileID: 5370212312917850065, guid: 37767e0f179a804479b38805f0043cc7, type: 3}
+  prefab: {fileID: 5370212312917850065, guid: 37767e0f179a804479b38805f0043cc7, type: 3}
+  width: 50
+  height: 50
+  spacing: 2
 --- !u!4 &954734436
 Transform:
   m_ObjectHideFlags: 0
@@ -13619,7 +13618,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-448432
+  m_Name: pb_Mesh55880
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
