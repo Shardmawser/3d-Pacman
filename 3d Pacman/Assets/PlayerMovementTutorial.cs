@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerMovementTutorial : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    float moveSpeed;
 
     public float groundDrag;
 
@@ -14,9 +15,16 @@ public class PlayerMovementTutorial : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
+    bool isRunning;
 
-    [HideInInspector] public float walkSpeed;
-    [HideInInspector] public float sprintSpeed;
+    public float walkSpeed = 10f;
+    public float sprintSpeed = 15f;
+
+    [Header("Camera")]
+    public Camera cam;
+    public GameObject runLines;
+    public float runFOV = 80f;
+    public float defaultFOV = 60f;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -50,6 +58,7 @@ public class PlayerMovementTutorial : MonoBehaviour
 
         MyInput();
         SpeedControl();
+        ControlFOV();
 
         // handle drag
         if (grounded)
@@ -69,13 +78,22 @@ public class PlayerMovementTutorial : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        /*if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
 
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
+        }*/
+
+        if (Input.GetKey(KeyCode.LeftShift) && grounded)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
         }
     }
 
@@ -102,6 +120,33 @@ public class PlayerMovementTutorial : MonoBehaviour
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+
+        if (isRunning)
+        {
+            moveSpeed = sprintSpeed;
+            if(verticalInput != 0)
+                runLines.SetActive(true);
+            else
+                runLines.SetActive(false);
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+            runLines.SetActive(false);
+            
+        }
+    }
+
+    void ControlFOV()
+    {
+        if (isRunning)
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, runFOV, 10f * Time.deltaTime);
+        }
+        else
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, defaultFOV, 10f * Time.deltaTime);
         }
     }
 
