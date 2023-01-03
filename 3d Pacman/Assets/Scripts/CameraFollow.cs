@@ -8,6 +8,9 @@ public class CameraFollow : MonoBehaviour
     Transform target;
 
     [SerializeField]
+    Transform orientation;
+
+    [SerializeField]
     Vector3 offset;
 
     // Start is called before the first frame update
