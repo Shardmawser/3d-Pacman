@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         {
             for(int j= 0; j < numX; j++)
             {
-                xPos = j * spacing - width / 2f + spacing;
-                zPos = i * spacing - height / 2f + spacing;
+                xPos = j * spacing - width + spacing;
+                zPos = i * spacing - height + spacing;
 
                 Vector3 positon = new Vector3(xPos, 1.423f, zPos);
 
