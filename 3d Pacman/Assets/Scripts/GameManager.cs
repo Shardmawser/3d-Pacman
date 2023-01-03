@@ -8,32 +8,33 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject prefab; // the prefab to instantiate
-    public float width; // width of the area
-    public float height; // height of the area
-    public float spacing; // spacing between the game objects
+    public Transform startingPos;
 
-    void Start()
+    public float width;
+    public float height;
+    public float spacing;
+
+    public GameObject point;
+    private void Start()
     {
-        // calculate the number of game objects to instantiate in the x and y directions
-        int numX = Mathf.RoundToInt(width / spacing);
-        int numY = Mathf.RoundToInt(height / spacing);
+        int numX =  Mathf.RoundToInt(width/spacing);
+        int numZ =  Mathf.RoundToInt(height/spacing);
 
-        // iterate through the x and y directions and instantiate game objects
-        for (int x = 0; x < numX; x++)
+        float xPos;
+        float zPos;
+
+
+        for(int i = 0; i < numZ; i++)
         {
-            for (int y = 0; y < numY; y++)
+            for(int j= 0; j < numX; j++)
             {
-                // calculate the position of the game object
-                float xPos = x * spacing - width / 2f + spacing / 2f;
-                float yPos = y * spacing - height / 2f + spacing / 2f;
+                xPos = j * spacing - width / 2f + spacing;
+                zPos = i * spacing - height / 2f + spacing;
 
-                // create a new game object at the calculated position
-                Vector3 position = new Vector3(xPos, 0f, yPos);
-                GameObject go = Instantiate(prefab, position, Quaternion.identity);
+                Vector3 positon = new Vector3(xPos, 1.423f, zPos);
 
-                // set the parent of the game object to this transform
-                go.transform.parent = transform;
+                GameObject go = Instantiate(point, positon, Quaternion.identity);
+
             }
         }
     }
