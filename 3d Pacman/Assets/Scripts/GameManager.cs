@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
                 xPos = j * spacing - width + spacing;
                 zPos = i * spacing - height + spacing;
 
-                Vector3 positon = new Vector3(xPos, 1.423f, zPos);
+                Vector3 positon = startingPos.position + new Vector3(xPos, 1.423f, zPos);
 
                 GameObject go = Instantiate(point, positon, Quaternion.identity);
 
@@ -39,4 +39,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
 }

@@ -11400,9 +11400,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPos: {fileID: 1861057737}
-  width: 30
-  height: 30
-  spacing: 5
+  width: 100
+  height: 100
+  spacing: 20
   point: {fileID: 5370212312917850065, guid: 37767e0f179a804479b38805f0043cc7, type: 3}
 --- !u!4 &954734436
 Transform:
@@ -18505,7 +18505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861057736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.08, y: 1.423, z: -81.58}
+  m_LocalPosition: {x: 86.14, y: 1.423, z: -3.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
